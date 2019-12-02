@@ -41,8 +41,12 @@ function game() {
     if (userInput == null || userInput == "") {
       console.log("Player cancelled the prompt");
     } else {
-      console.log("You played: " + userInput);
+      console.log("You played: " + toCapital(userInput));
     }
+
+    const playerSelection = toCapital(userInput);
+    const computerSelection = computerPlay();
+    console.log(playRound(playerSelection, computerSelection));
     //var counter = {player: 0, computer: 0};
     // Use the playRound function inside of this one
     //playRound(playerSelection, computerSelection)
