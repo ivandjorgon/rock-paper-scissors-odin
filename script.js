@@ -14,63 +14,46 @@ function playRound(playerSelection, computerSelection) {
     var player = toCapital(playerSelection);
     var computer = toCapital(computerSelection);
 
-    var playerWin = 0;
-    var compWin = 0;
+    let playerWin = 0;
+    let compWin = 0;
     
     if (player == "Rock" && computer == "Rock") {
         return "Draw! Rock equals to Rock";
       } else if (player == 'Rock' && computer == 'Paper') {
-        compWin += 1;
-        console.log(compWin);
-        return "You Lose! Paper beats Rock --- Computer Win: " + compWin;
-        //"You Lose! Paper beats Rock";
-        //compwin++;
-        //console.log("C" + compWin);
+        compWin++;
+        return "You Lose! Paper beats Rock";
       } else if (player == 'Rock' && computer == 'Scissors') {
-        playerWin += 1;
-        console.log(playerWin);
-        return "You Win! Rock beats Scissors --- Your Win: " + playerWin;
-        //"You Win! Rock beats Scissors";
-        //playerWin++;
-        //console.log("P" + playerWin++)
+        playerWin++;
+        return "You Win! Rock beats Scissors";
       } else if (player == 'Paper' && computer == 'Rock') {
-        playerWin += 1;
-        console.log(playerWin);
-        return "You Win! Rock beats Scissors --- Your Win: " + playerWin;
-        //"You Win! Paper beats Rock";
-        //playerWin++;
-        //console.log("P" + playerWin++)
+        playerWin++;
+        return "You Win! Rock beats Scissors";
       } else if (player == 'Paper' && computer == 'Paper') {
         return "Draw! Paper equals to Paper";
       } else if (player == 'Paper' && computer == 'Scissors') {
-        compWin += 1;
-        console.log(compWin);
-        return "You Lose! Scissors beat Paper --- Computer Win: " + compWin;
-        //compwin++;
-        //console.log("C" + compWin++);
+        compWin++;
+        return "You Lose! Scissors beat Paper";
       } else if (player == 'Scissors' && computer == 'Rock') {
-        compwin += 1;
-        console.log(compWin);
-        return "You Lose! Scissors beat Paper --- Computer Win: " + compWin;
-        //compwin++;
-        //console.log("C" + compWin++);
+        compwin++;
+        return "You Lose! Scissors beat Paper";
       } else if (player == 'Scissors' && computer == 'Paper') {
-        playerWin += 1;
-        console.log(playerWin);
-        return "You Win! Rock beats Scissors --- Your Win: " + playerWin;
-        //playerWin++;
-        //console.log("P" + playerWin++)
+        playerWin++;
+        return "You Win! Rock beats Scissors";
       } else {
         return "Draw! Scissors equal to Scissors";
       }
-      //console.log("Number of Computer Wins: " + compWin);
-      //console.log("Your Wins: " + playerWin);
-}
+
+
+    }
+
 
 // Play a 5 round game that keeps the score and reports a winner or loser at the end.
 function game() {
-    
-  for (let i = 0; i < 5; i++) {
+  
+  //let win = "You win"
+  //let lose = "You lose"
+  //let tie = "It is a tie"
+  for (var i = 0; i < 5; i++) {
   // Print each iteration to the console
   console.log(i);
     
@@ -84,6 +67,8 @@ function game() {
       const playerSelection = toCapital(userInput);
       const computerSelection = computerPlay();
       console.log(playRound(playerSelection, computerSelection));
+      //console.log("Your wins: " + playerWin);
+      //console.log("Computer wins: " + compWin);
     }
   }  
 }
