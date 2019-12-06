@@ -6,71 +6,63 @@ function computerPlay() {
         'Scissors'
       ];
       
-    return randomItem = myArray[Math.floor(Math.random()*myArray.length)];
+    return myArray[Math.floor(Math.random()*myArray.length)];
 }
+
+var w = 0;
+var l = 0;
 
 // Function that plays a single round of Rock Paper Scissors.
 function playRound(playerSelection, computerSelection) {
     var player = toCapital(playerSelection);
     var computer = toCapital(computerSelection);
-
-    let playerWin = 0;
-    let compWin = 0;
     
-    if (player == "Rock" && computer == "Rock") {
+    if (player === "Rock" && computer === "Rock") {
         return "Draw! Rock equals to Rock";
-      } else if (player == 'Rock' && computer == 'Paper') {
-        compWin++;
+      } else if (player === 'Rock' && computer === 'Paper') {
+        l++;
         return "You Lose! Paper beats Rock";
-      } else if (player == 'Rock' && computer == 'Scissors') {
-        playerWin++;
+      } else if (player === 'Rock' && computer === 'Scissors') {
+        w++;
         return "You Win! Rock beats Scissors";
-      } else if (player == 'Paper' && computer == 'Rock') {
-        playerWin++;
-        return "You Win! Rock beats Scissors";
-      } else if (player == 'Paper' && computer == 'Paper') {
+      } else if (player === 'Paper' && computer === 'Rock') {
+        w++;
+        return "You Win! Paper beats Rock";
+      } else if (player === 'Paper' && computer === 'Paper') {
         return "Draw! Paper equals to Paper";
-      } else if (player == 'Paper' && computer == 'Scissors') {
-        compWin++;
+      } else if (player === 'Paper' && computer === 'Scissors') {
+        l++;
         return "You Lose! Scissors beat Paper";
-      } else if (player == 'Scissors' && computer == 'Rock') {
-        compwin++;
+      } else if (player === 'Scissors' && computer === 'Rock') {
+        l++;
         return "You Lose! Scissors beat Paper";
-      } else if (player == 'Scissors' && computer == 'Paper') {
-        playerWin++;
+      } else if (player === 'Scissors' && computer === 'Paper') {
+        w++;
         return "You Win! Rock beats Scissors";
       } else {
         return "Draw! Scissors equal to Scissors";
       }
-
-
     }
 
 
 // Play a 5 round game that keeps the score and reports a winner or loser at the end.
 function game() {
   
-  //let win = "You win"
-  //let lose = "You lose"
-  //let tie = "It is a tie"
-  for (var i = 0; i < 5; i++) {
-  // Print each iteration to the console
-  console.log(i);
-    
+  round = 0;
+  while (round < 5) {
+    playerSelection = prompt("Rock Paper Scissors! Please enter your selection:", "Rock");
+    computerSelection = computerPlay();
+    console.log(playRound(playerSelection, computerSelection));
+    round++;
+  }
 
-    var userInput = prompt("Rock Paper Scissors! Please enter your selection:", "Rock");
-    if (userInput == null || userInput == "") {
-      console.log("Player cancelled the prompt");
-    } else {
-      console.log("You played: " + toCapital(userInput));
-
-      const playerSelection = toCapital(userInput);
-      const computerSelection = computerPlay();
-      console.log(playRound(playerSelection, computerSelection));
-      //console.log("Your wins: " + playerWin);
-      //console.log("Computer wins: " + compWin);
-    }
-  }  
+  if (w > l) {
+    return 'You Win the Game! Player: ' + w + ', Computer: ' + l;
+  } else if (w < l) {
+    return 'You Lose the Game! Player: ' + w + ', Computer: ' + l;
+  } else {
+    return 'It\'s a draw!';
+  }
 }
 
 // Helper function that takes a string and returns it with only the first letter capitalized.
@@ -83,4 +75,4 @@ function toCapital(str) {
 //const playerSelection = 'rock';
 //const computerSelection = computerPlay();
 //console.log(playRound(playerSelection, computerSelection));
-const playerSelection = game();
+console.log(game());
