@@ -9,57 +9,59 @@ function computerPlay() {
     return myArray[Math.floor(Math.random()*myArray.length)];
 }
 
-var w = 0;
-var l = 0;
+var win = 0;
+var loss = 0;
 
 // Function that plays a single round of Rock Paper Scissors.
 function playRound(playerSelection, computerSelection) {
     var player = toCapital(playerSelection);
     var computer = toCapital(computerSelection);
     
-    if (player === "Rock" && computer === "Rock") {
-        return "Draw! Rock equals to Rock";
+    if (player === 'Rock' && computer === 'Rock') {
+        return 'Draw! Rock equals to Rock';
       } else if (player === 'Rock' && computer === 'Paper') {
-        l++;
-        return "You Lose! Paper beats Rock";
+        loss++;
+        return 'You Lose! Paper beats Rock';
       } else if (player === 'Rock' && computer === 'Scissors') {
-        w++;
-        return "You Win! Rock beats Scissors";
+        win++;
+        return 'You Win! Rock beats Scissors';
       } else if (player === 'Paper' && computer === 'Rock') {
-        w++;
-        return "You Win! Paper beats Rock";
+        win++;
+        return 'You Win! Paper beats Rock';
       } else if (player === 'Paper' && computer === 'Paper') {
-        return "Draw! Paper equals to Paper";
+        return 'Draw! Paper equals to Paper';
       } else if (player === 'Paper' && computer === 'Scissors') {
-        l++;
-        return "You Lose! Scissors beat Paper";
+        loss++;
+        return 'You Lose! Scissors beat Paper';
       } else if (player === 'Scissors' && computer === 'Rock') {
-        l++;
-        return "You Lose! Scissors beat Paper";
+        loss++;
+        return 'You Lose! Scissors beat Paper';
       } else if (player === 'Scissors' && computer === 'Paper') {
-        w++;
-        return "You Win! Rock beats Scissors";
+        win++;
+        return 'You Win! Rock beats Scissors';
+      } else if (player === 'Scissors' && computer === 'Scissors') {
+        return 'Draw! Scissors equal to Scissors';
       } else {
-        return "Draw! Scissors equal to Scissors";
+        alert('You did not enter a valid response. Please try again.');
+        round--;
       }
     }
-
 
 // Play a 5 round game that keeps the score and reports a winner or loser at the end.
 function game() {
   
   round = 0;
   while (round < 5) {
-    playerSelection = prompt("Rock Paper Scissors! Please enter your selection:", "Rock");
+    playerSelection = prompt('Rock Paper Scissors! Please enter your selection:', 'Rock');
     computerSelection = computerPlay();
     console.log(playRound(playerSelection, computerSelection));
     round++;
   }
 
-  if (w > l) {
-    return 'You Win the Game! Player: ' + w + ', Computer: ' + l;
-  } else if (w < l) {
-    return 'You Lose the Game! Player: ' + w + ', Computer: ' + l;
+  if (win > loss) {
+    return 'You win the game! Player: ' + win + ', Computer: ' + loss;
+  } else if (win < loss) {
+    return 'You lose the game! Computer wins! Player: ' + win + ', Computer: ' + loss;
   } else {
     return 'It\'s a draw!';
   }
@@ -71,8 +73,4 @@ function toCapital(str) {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
 
-// console.log(computerPlay());
-//const playerSelection = 'rock';
-//const computerSelection = computerPlay();
-//console.log(playRound(playerSelection, computerSelection));
 console.log(game());
