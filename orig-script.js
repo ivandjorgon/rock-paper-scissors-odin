@@ -1,17 +1,4 @@
-const btnrock = document.querySelector('#rock');
-btnrock.addEventListener('click', () => {
-  alert("Rock Test");
-});
-
-const btnsci = document.querySelector('#scissors');
-btnsci.addEventListener('click', () => {
-  alert("Scissors Test");
-});
-
-const btnpaper = document.querySelector('#paper');
-btnpaper.addEventListener('click', () => {
-  alert("Paper Test");
-});
+// Copying original script code into this new file.
 
 // Function computerPlay randomly returns either ‘Rock’, ‘Paper’ or ‘Scissors’.
 function computerPlay() {
@@ -58,9 +45,29 @@ function playRound(playerSelection, computerSelection) {
         return 'Draw! Scissors equal to Scissors';
       } else {
         alert('You did not enter a valid response. Please try again.');
-        //round--;
+        round--;
       }
     }
+
+// Play a 5 round game that keeps the score and reports a winner or loser at the end.
+function game() {
+  
+  round = 0;
+  while (round < 5) {
+    playerSelection = prompt('Rock Paper Scissors! Please enter your selection:', 'Rock');
+    computerSelection = computerPlay();
+    console.log(playRound(playerSelection, computerSelection));
+    round++;
+  }
+
+  if (win > loss) {
+    return 'You win the game! Player: ' + win + ', Computer: ' + loss;
+  } else if (win < loss) {
+    return 'You lose the game! Computer wins! Player: ' + win + ', Computer: ' + loss;
+  } else {
+    return 'It\'s a draw!';
+  }
+}
 
 // Helper function that takes a string and returns it with only the first letter capitalized.
 // It is case insensitive and users can input rock, ROCK, RocK or any other variation.
@@ -68,4 +75,4 @@ function toCapital(str) {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
 
-console.log(playRound('rock', computerPlay()));
+console.log(game());
