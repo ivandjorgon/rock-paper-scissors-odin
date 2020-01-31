@@ -1,17 +1,11 @@
 const btnrock = document.querySelector('#rock');
-btnrock.addEventListener('click', () => {
-  alert("Rock Test");
-});
+btnrock.addEventListener('click', () => {playRound('rock', computerPlay()), console.log(this)});
 
-const btnsci = document.querySelector('#scissors');
-btnsci.addEventListener('click', () => {
-  alert("Scissors Test");
-});
+const btnscissors = document.querySelector('#scissors');
+btnscissors.addEventListener('click', () => {playRound('scissors', computerPlay()), console.log(this)});
 
 const btnpaper = document.querySelector('#paper');
-btnpaper.addEventListener('click', () => {
-  alert("Paper Test");
-});
+btnpaper.addEventListener('click', () => {playRound('paper', computerPlay()), console.log(this)});
 
 // Function computerPlay randomly returns either ‘Rock’, ‘Paper’ or ‘Scissors’.
 function computerPlay() {
