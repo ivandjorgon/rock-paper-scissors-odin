@@ -1,4 +1,4 @@
-// Copying original script code into this new file.
+// This is the original script code into this new file.
 
 // Function computerPlay randomly returns either ‘Rock’, ‘Paper’ or ‘Scissors’.
 function computerPlay() {
