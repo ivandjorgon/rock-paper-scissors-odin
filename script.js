@@ -7,6 +7,10 @@ btnscissors.addEventListener('click', () => {playRound('scissors', computerPlay(
 const btnpaper = document.querySelector('#paper');
 btnpaper.addEventListener('click', () => {playRound('paper', computerPlay()), console.log(this)});
 
+result = document.querySelector('#results-container');
+message = document.querySelector('#message-container');
+winner = document.querySelector('#winner-container');
+
 // Function computerPlay randomly returns either ‘Rock’, ‘Paper’ or ‘Scissors’.
 function computerPlay() {
     var myArray = [
@@ -18,13 +22,14 @@ function computerPlay() {
     return myArray[Math.floor(Math.random()*myArray.length)];
 }
 
-var win = 0;
-var loss = 0;
+var win = 0; // Player Score
+var loss = 0; // Computer Score
 
 // Function that plays a single round of Rock Paper Scissors.
 function playRound(playerSelection, computerSelection) {
     var player = toCapital(playerSelection);
     var computer = toCapital(computerSelection);
+    winner.style.display = "none";
     
     if (player === 'Rock' && computer === 'Rock') {
         return 'Draw! Rock equals to Rock';
@@ -40,8 +45,11 @@ function playRound(playerSelection, computerSelection) {
       } else if (player === 'Paper' && computer === 'Paper') {
         return 'Draw! Paper equals to Paper';
       } else if (player === 'Paper' && computer === 'Scissors') {
+        result.textContent = "You Lose! Scissors beats Paper!";
         loss++;
-        return 'You Lose! Scissors beat Paper';
+        message.textContent = "Computer: " + loss + " Player: " + win;
+        //loss++;
+        //return 'You Lose! Scissors beat Paper';
       } else if (player === 'Scissors' && computer === 'Rock') {
         loss++;
         return 'You Lose! Scissors beat Paper';
