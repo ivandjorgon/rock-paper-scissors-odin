@@ -44,3 +44,13 @@
     border: 3px;
     margin: 20px;
   }
+
+  #winner-container {
+    background-color: none;
+    display: grid;
+    justify-items: normal;
+    padding-left: 5px;
+    text-align: center;
+    border: 3px;
+    margin: 20px;
+  }

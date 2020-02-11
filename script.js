@@ -29,38 +29,64 @@ var loss = 0; // Computer Score
 function playRound(playerSelection, computerSelection) {
     var player = toCapital(playerSelection);
     var computer = toCapital(computerSelection);
-    winner.style.display = "none";
+    winner.style.display = 'none';
     
     if (player === 'Rock' && computer === 'Rock') {
-        return 'Draw! Rock equals to Rock';
+        result.textContent = 'Draw! Rock equals to Rock';
+        message.textContent = 'Computer: ' + loss + ' Player: ' + win;
+
       } else if (player === 'Rock' && computer === 'Paper') {
+        result.textContent = 'You Lose! Paper beats Rock';
         loss++;
-        return 'You Lose! Paper beats Rock';
+        message.textContent = 'Computer: ' + loss + ' Player: ' + win;
+
       } else if (player === 'Rock' && computer === 'Scissors') {
+        result.textContent = 'You Win! Rock beats Scissors';
         win++;
-        return 'You Win! Rock beats Scissors';
+        message.textContent = 'Computer: ' + loss + ' Player: ' + win; 
+ 
       } else if (player === 'Paper' && computer === 'Rock') {
+        result.textContent = 'You Win! Paper beats Rock';
         win++;
-        return 'You Win! Paper beats Rock';
+        message.textContent = 'Computer: ' + loss + ' Player: ' + win;
+       
       } else if (player === 'Paper' && computer === 'Paper') {
-        return 'Draw! Paper equals to Paper';
+        result.textContent = 'Draw! Paper equals to Paper';
+        message.textContent = 'Computer: ' + loss + ' Player: ' + win;
+       
       } else if (player === 'Paper' && computer === 'Scissors') {
-        result.textContent = "You Lose! Scissors beats Paper!";
+        result.textContent = 'You Lose! Scissors beat Paper!';
         loss++;
-        message.textContent = "Computer: " + loss + " Player: " + win;
-        //loss++;
-        //return 'You Lose! Scissors beat Paper';
+        message.textContent = 'Computer: ' + loss + ' Player: ' + win;
+  
       } else if (player === 'Scissors' && computer === 'Rock') {
+        result.textContent = 'You Lose! Rock beats Scissors';
         loss++;
-        return 'You Lose! Scissors beat Paper';
+        message.textContent = 'Computer: ' + loss + ' Player: ' + win;
+      
       } else if (player === 'Scissors' && computer === 'Paper') {
+        result.textContent = 'You Win! Scissors beat Paper';
         win++;
-        return 'You Win! Rock beats Scissors';
+        message.textContent = 'Computer: ' + loss + ' Player: ' + win;
+     
       } else if (player === 'Scissors' && computer === 'Scissors') {
-        return 'Draw! Scissors equal to Scissors';
+        result.textContent = 'Draw! Scissors equal to Scissors';
+        message.textContent = 'Computer: ' + loss + ' Player: ' + win;
+
       } else {
         alert('You did not enter a valid response. Please try again.');
-        //round--;
+      }
+      
+      if (loss == 5){
+        winner.style.display = 'block';
+        winner.textContent = 'Computer wins! You lose. Do you want to play again?';
+        loss = 0;
+        win = 0;
+      } else if (win == 5){
+        winner.style.display = 'block';
+        winner.textContent = 'You win! Do you want to play again?';
+        loss = 0;
+        win = 0;
       }
     }
 
@@ -69,5 +95,3 @@ function playRound(playerSelection, computerSelection) {
 function toCapital(str) {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 }
-
-console.log(playRound('rock', computerPlay()));
