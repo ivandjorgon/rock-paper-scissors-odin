@@ -4,18 +4,20 @@
   }
   
   #main-container {
-    background-color: burlywood
-    display: grid;
-    justify-items: normal;
-    padding-left: 5px;
+    background-color: rgb(214, 165, 67);
+    justify-items: center;
     text-align: center;
-    border: 3px;
     margin: 20px;
     font-size: 30px;
+    border: 8px solid grey;
+    padding: 10px;
+    background-image: linear-gradient(to right, green , yellow);
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
   }
   
   #button-container {
-    background-color: burlywood
+    background-color: none;
     color: white;
     padding: 15px 32px;
     text-align: center;
@@ -26,7 +28,17 @@
   }
 
   #results-container {
-    background-color: burlywood
+    background-color: none;
+    display: grid;
+    justify-items: normal;
+    padding-left: 5px;
+    text-align: center;
+    border: 3px;
+    margin: 20px;
+  }
+
+  #message-container {
+    background-color: none;
     display: grid;
     justify-items: normal;
     padding-left: 5px;
