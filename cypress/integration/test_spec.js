@@ -1,7 +1,3 @@
-beforeEach(() => {
-    cy.log('I run before every test in the test spec file!')
-})
-
 describe('First Passing Test', () => {
     it('Does not do much!', () => {
       expect(true).to.equal(true)
